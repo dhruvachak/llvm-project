@@ -44,15 +44,18 @@ int main() {
   return host_var1 != host_var2;
 }
 
-/// CHECK: Callback DataOp: target_id=[[TARGET_ID:[0-9]+]]
-/// host_op_id=[[HOST_OP_ID:[0-9]+]] optype=1 CHECK-NOT: code=(nil) CHECK:
-/// code=[[CODE1:.*]] CHECK: Callback DataOp: target_id=[[TARGET_ID:[0-9]+]]
-/// host_op_id=[[HOST_OP_ID:[0-9]+]] optype=2 CHECK-NOT: code=(nil) CHECK-NOT:
-/// code=[[CODE1]] CHECK: code=[[CODE2:.*]] CHECK: Callback DataOp:
-/// target_id=[[TARGET_ID:[0-9]+]] host_op_id=[[HOST_OP_ID:[0-9]+]] optype=3
+// clang-format off
+/// CHECK: Callback DataOp: target_id=[[TARGET_ID:[0-9]+]] host_op_id=[[HOST_OP_ID:[0-9]+]] optype=1
+/// CHECK-NOT: code=(nil)
+/// CHECK: code=[[CODE1:.*]]
+/// CHECK: Callback DataOp: target_id=[[TARGET_ID:[0-9]+]] host_op_id=[[HOST_OP_ID:[0-9]+]] optype=2
+/// CHECK-NOT: code=(nil)
+/// CHECK-NOT: code=[[CODE1]]
+/// CHECK: code=[[CODE2:.*]]
+/// CHECK: Callback DataOp: target_id=[[TARGET_ID:[0-9]+]] host_op_id=[[HOST_OP_ID:[0-9]+]] optype=3
 /// CHECK-NOT: code=(nil)
 /// CHECK-NOT: code=[[CODE2]]
 /// CHECK: code=[[CODE3:.*]]
-/// CHECK: Callback DataOp: target_id=[[TARGET_ID:[0-9]+]]
-/// host_op_id=[[HOST_OP_ID:[0-9]+]] optype=4 CHECK-NOT: code=(nil) CHECK-NOT:
-/// code=[[CODE3]]
+/// CHECK: Callback DataOp: target_id=[[TARGET_ID:[0-9]+]] host_op_id=[[HOST_OP_ID:[0-9]+]] optype=4
+/// CHECK-NOT: code=(nil)
+/// CHECK-NOT: code=[[CODE3]]
